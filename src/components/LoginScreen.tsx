@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { ArrowRight, Sparkles, GitBranch, ListTodo } from "lucide-react";
 
 export function LoginScreen() {
-  const login = useStore((s) => s.login);
+  const { login } = useStore();
   const [email, setEmail] = useState("ada.lovelace@neuranote.app");
   const [password, setPassword] = useState("••••••••");
 

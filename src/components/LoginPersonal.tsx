@@ -69,7 +69,7 @@ export function LoginPersonal({ onBack, onLogin, isLoading }: Props) {
           </div>
         </div>
         <div className="relative text-xs text-muted-foreground font-mono">
-          {t("app.version")} · Campus Sabará
+          {t("app.version")} · Campus Ibirité
         </div>
       </div>
 

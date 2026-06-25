@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     # API
     API_V1_STR: str = "/api/v1"
     PROJECT_NAME: str = "NeuraNote"
-    PROJECT_VERSION: str = "0.1.0"
+    PROJECT_VERSION: str = "1.0"
 
     # Database
     MONGODB_URL: str = "mongodb://localhost:27017"
@@ -20,7 +20,7 @@ class Settings(BaseSettings):
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
     # CORS
     ALLOWED_ORIGINS: list = ["*"]
-    # Llama/IA
+    # Llama/IA (ainda tenho que colocar direito essa bomba)
     LLAMA_MODEL: str = "llama2"
     OLLAMA_BASE_URL: str = "http://localhost:11434"
 

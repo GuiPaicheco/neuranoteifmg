@@ -58,7 +58,7 @@ export function LoginSelectMode({ onSelectPersonal, onSelectCorporate }: Props) 
               className="w-full h-12 bg-gradient-primary hover:opacity-90 text-primary-foreground font-semibold shadow-glow flex items-center justify-center gap-2"
             >
               <User className="h-5 w-5" />
-              Espaço Pessoal (Estudos & Notas)
+              Espaço Pessoal (Anotações Privadas e Pessoais)
             </Button>
 
             <Button
@@ -67,7 +67,7 @@ export function LoginSelectMode({ onSelectPersonal, onSelectCorporate }: Props) 
               className="w-full h-12 font-semibold flex items-center justify-center gap-2 border-border/80 hover:bg-muted"
             >
               <Building2 className="h-5 w-5 text-emerald-400" />
-              Espaço Compartilhado (Laboratório & Pesquisa)
+              Espaço Compartilhado (Anotações Compartilhadas em Grupo)
             </Button>
           </div>
 

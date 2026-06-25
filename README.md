@@ -51,7 +51,7 @@ Desenvolvido em **React** utilizando **Vite**, **TypeScript**, **Tailwind CSS** 
 
 ---
 
-## 🚀 Como Rodar o Projeto
+## 🚀 Como Rodar o Projeto Localmente
 
 ### Pré-requisitos
 - **Python 3.10+** (Launcher `py` no Windows)
@@ -118,38 +118,6 @@ Para verificar o health-check do backend:
 ```bash
 curl http://localhost:8000/health
 ```
-
----
-
-## 🌐 Hospedagem Online (Deploy)
-
-O NeuraNote está preparado para ser hospedado gratuitamente na nuvem. Siga o guia abaixo para implantar o frontend e o backend.
-
-### 1. Frontend (Vercel)
-A Vercel é a plataforma ideal e gratuita para hospedar o frontend SPA em React.
-1. **Conecte seu Repositório**: Crie uma conta na Vercel e importe seu repositório Git do NeuraNote.
-2. **Configuração de Build**:
-   - **Framework Preset**: `Vite`
-   - **Root Directory**: `./` (raiz do projeto)
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-3. **Variáveis de Ambiente**:
-   - Adicione `VITE_API_URL` com a URL do seu backend hospedado (ex: `https://neuranote-backend.onrender.com`).
-4. **Roteamento SPA**:
-   - O arquivo `vercel.json` na raiz já está configurado para direcionar todas as rotas do frontend (`/auth`, `/notes`, etc.) para o `index.html`, evitando erros de 404 em recarregamentos de página.
-
-### 2. Backend (Render / Railway / Fly.io)
-O backend em FastAPI pode ser hospedado em plataformas de nuvem de contêineres gratuitas ou de baixo custo como Render ou Railway.
-1. **Conecte seu Repositório**: Crie um serviço web ("Web Service") e aponte para o repositório do NeuraNote.
-2. **Configuração de Execução**:
-   - **Build Command**: `pip install -r backend/requirements.txt`
-   - **Start Command**: `uvicorn backend.main:app --host 0.0.0.0 --port $PORT` (ou defina o diretório de trabalho na pasta `backend` e use `uvicorn main:app --host 0.0.0.0 --port $PORT`).
-3. **Variáveis de Ambiente**:
-   - `MONGODB_URL`: Sua string de conexão do MongoDB (ex: cluster gratuito no MongoDB Atlas). Caso esta variável esteja ausente ou inacessível, o app ativará o fallback do `MockDatabase` em memória.
-   - `SECRET_KEY`: Uma frase secreta segura para codificação dos tokens JWT.
-   - `DEBUG`: `False`
-   - `ALLOWED_ORIGINS`: `["*"]` (ou sua URL específica da Vercel).
-   - `LLAMA_MODEL` e `OLLAMA_BASE_URL` (se for usar IA integrada).
 
 ---
 

@@ -158,6 +158,7 @@ Se o banco de dados iniciar vazio (ou em memória), os seguintes dados de seed e
 - **Email**: `ada.lovelace@neuranote.app`
 - **Senha**: `ada`
 
+---
 
 ## Minhas Pêndencias
 - Desbugar algumas funcionalidades (ex: idiomas)

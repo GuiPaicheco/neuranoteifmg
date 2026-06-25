@@ -67,7 +67,7 @@ export function LoginSelectMode({ onSelectPersonal, onSelectCorporate }: Props) 
               className="w-full h-12 font-semibold flex items-center justify-center gap-2 border-border/80 hover:bg-muted"
             >
               <Building2 className="h-5 w-5 text-emerald-400" />
-              Espaço Compartilhado (Anotações Compartilhadas em Grupo)
+              Espaço Compartilhado (Anotações em Grupo)
             </Button>
           </div>
 

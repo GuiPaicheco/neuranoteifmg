@@ -72,7 +72,7 @@ export function LoginSelectMode({ onSelectPersonal, onSelectCorporate }: Props) 
           </div>
 
           <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/10 text-center text-xs text-emerald-400/90 font-mono">
-            Infraestrutura acadêmica mantida e patrocinada pelo IFMG.
+            Infraestrutura Acadêmica Criada por Estudantes do IFMG.
           </div>
 
           <p className="text-xs text-center text-muted-foreground">

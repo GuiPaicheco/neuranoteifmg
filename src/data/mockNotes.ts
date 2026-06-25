@@ -36,7 +36,7 @@ export interface Note {
   updatedAt: string;
 }
 
-export const CATEGORIES = ["Study", "Work", "Personal", "Research", "Ideas"] as const;
+export const CATEGORIES = ["Aulas", "Trabalhos", "Provas", "Projetos", "Pesquisa", "Ideias"] as const;
 
 export const initialNotes: Note[] = [
   {

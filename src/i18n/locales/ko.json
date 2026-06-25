@@ -1,0 +1,91 @@
+{
+  "app.title": "NeuraNote",
+  "app.tagline": "your second brain, finally connected",
+  "app.version": "v0.1 · prototype build",
+
+  "auth.email": "Email",
+  "auth.password": "Password",
+  "auth.name": "Full Name",
+  "auth.enterNeuraNote": "Enter NeuraNote",
+  "auth.terms": "By continuing you accept the imaginary terms of an unreleased product.",
+  "auth.demoNote": "Any credentials work — this is a prototype demo.",
+
+  "nav.dashboard": "Dashboard",
+  "nav.graph": "Graph",
+  "nav.settings": "Settings",
+  "nav.logout": "Log out",
+
+  "note.newNote": "New Note",
+  "note.cancel": "Cancel",
+  "note.createNote": "Create note",
+  "note.saveChanges": "Save changes",
+  "note.edit": "Edit",
+  "note.close": "Close",
+  "note.delete": "Delete",
+
+  "note.title": "Title",
+  "note.category": "Category",
+  "note.keywords": "Keywords (comma-separated)",
+  "note.content": "Content",
+  "note.titlePlaceholder": "A clear, searchable title…",
+  "note.keywordsPlaceholder": "ai, retrieval, ideas",
+  "note.contentPlaceholder": "Start writing…",
+
+  "note.noNotes": "No notes match your search.",
+  "note.selectNote": "Select a note to view details",
+  "note.notesCount": "{{count}} note",
+  "note.notesCount_plural": "{{count}} notes",
+  "note.matching": " matching ",
+
+  "section.tasks": "Tasks",
+  "section.connections": "Connected notes",
+  "section.attachments": "Attachments",
+  "section.history": "Edit history",
+  "section.noTasks": "No tasks yet.",
+  "section.noConnections": "No connections.",
+  "section.noAttachments": "No attachments.",
+
+  "task.newTask": "New task…",
+  "task.open": "open",
+  "task.low": "low",
+  "task.medium": "medium",
+  "task.high": "high",
+
+  "search.search": "Search notes…",
+  "search.placeholder": "Search by title, content or keywords…",
+
+  "view.dashboard": "Dashboard",
+  "view.knowledge": "Knowledge graph",
+  "view.visualization": "Visualization",
+
+  "category.all": "All",
+  "category.study": "Study",
+  "category.work": "Work",
+  "category.personal": "Personal",
+  "category.research": "Research",
+  "category.ideas": "Ideas",
+
+  "filter.filters": "Filters",
+  "filter.by": "By",
+  "filter.clear": "Clear",
+
+  "page.notFound": "Page not found",
+  "page.error404": "404",
+  "page.returnHome": "Return to Home",
+
+  "language.select": "Select language",
+  "language.portuguese": "Português (Brasil)",
+  "language.english": "English",
+  "language.spanish": "Español",
+  "language.french": "Français",
+  "language.german": "Deutsch",
+  "language.italian": "Italiano",
+  "language.japanese": "日本語",
+  "language.chinese": "中文",
+  "language.korean": "한국어",
+  "language.russian": "Русский",
+
+  "features.smartLinking": "Smart linking & keywords",
+  "features.visualGraph": "Visual knowledge graph",
+  "features.tasks": "Tasks attached to context"
+}

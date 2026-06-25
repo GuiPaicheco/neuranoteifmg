@@ -1,6 +1,8 @@
 import { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { useStore } from "@/store/useStore";
 import { Logo } from "./Logo";
+import LanguageSwitcher from "./LanguageSwitcher";
 import { CATEGORIES } from "@/data/mockNotes";
 import { Search, Plus, LogOut, LayoutDashboard, GitBranch, Tag, FolderOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -18,6 +20,7 @@ interface Props {
 
 export function Sidebar({ view, setView, search, setSearch, category, setCategory, onCreate }: Props) {
   const { user, logout, notes } = useStore();
+  const { t } = useTranslation();
 
   const counts = useMemo(() => {
     const m: Record<string, number> = {};
@@ -35,7 +38,7 @@ export function Sidebar({ view, setView, search, setSearch, category, setCategor
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Search notes…"
+            placeholder={t("search.placeholder")}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="pl-9 h-10 bg-sidebar-accent border-sidebar-border"
@@ -45,7 +48,7 @@ export function Sidebar({ view, setView, search, setSearch, category, setCategor
           onClick={onCreate}
           className="w-full bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium shadow-glow"
         >
-          <Plus className="h-4 w-4 mr-2" /> New Note
+          <Plus className="h-4 w-4 mr-2" /> {t("note.newNote")}
         </Button>
       </div>
 
@@ -54,22 +57,22 @@ export function Sidebar({ view, setView, search, setSearch, category, setCategor
           active={view === "dashboard"}
           onClick={() => setView("dashboard")}
           icon={<LayoutDashboard className="h-4 w-4" />}
-          label="Dashboard"
+          label={t("view.dashboard")}
         />
         <NavItem
           active={view === "graph"}
           onClick={() => setView("graph")}
           icon={<GitBranch className="h-4 w-4" />}
-          label="Graph view"
+          label={t("view.knowledge")}
         />
       </nav>
 
       <div className="px-5 pt-6 pb-2 flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-        <FolderOpen className="h-3 w-3" /> Categories
+        <FolderOpen className="h-3 w-3" /> {t("category.all")}
       </div>
       <div className="px-3 space-y-0.5 overflow-y-auto flex-1">
         <CategoryItem
-          label="All notes"
+          label={t("category.all")}
           count={notes.length}
           active={category === null}
           onClick={() => setCategory(null)}
@@ -85,21 +88,24 @@ export function Sidebar({ view, setView, search, setSearch, category, setCategor
         ))}
       </div>
 
-      <div className="p-4 border-t border-sidebar-border flex items-center gap-3">
-        <div className="h-9 w-9 rounded-full bg-gradient-primary grid place-items-center text-primary-foreground font-semibold text-sm">
-          {user?.name.charAt(0) || "U"}
+      <div className="p-4 border-t border-sidebar-border space-y-3">
+        <LanguageSwitcher />
+        <div className="flex items-center gap-3">
+          <div className="h-9 w-9 rounded-full bg-gradient-primary grid place-items-center text-primary-foreground font-semibold text-sm">
+            {user?.name.charAt(0) || "U"}
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="text-sm font-medium truncate">{user?.name}</div>
+            <div className="text-xs text-muted-foreground truncate">{user?.email}</div>
+          </div>
+          <button
+            onClick={logout}
+            className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-sidebar-accent transition-smooth"
+            title={t("nav.logout")}
+          >
+            <LogOut className="h-4 w-4" />
+          </button>
         </div>
-        <div className="flex-1 min-w-0">
-          <div className="text-sm font-medium truncate">{user?.name}</div>
-          <div className="text-xs text-muted-foreground truncate">{user?.email}</div>
-        </div>
-        <button
-          onClick={logout}
-          className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-sidebar-accent transition-smooth"
-          title="Log out"
-        >
-          <LogOut className="h-4 w-4" />
-        </button>
       </div>
     </aside>
   );

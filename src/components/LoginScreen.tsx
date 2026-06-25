@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { useTranslation } from "react-i18next";
 import { useStore } from "@/store/useStore";
 import { Logo } from "./Logo";
 import { Button } from "@/components/ui/button";
@@ -8,6 +9,7 @@ import { ArrowRight, Sparkles, GitBranch, ListTodo } from "lucide-react";
 
 export function LoginScreen() {
   const { login } = useStore();
+  const { t } = useTranslation();
   const [email, setEmail] = useState("ada.lovelace@neuranote.app");
   const [password, setPassword] = useState("••••••••");
 
@@ -27,19 +29,19 @@ export function LoginScreen() {
         </div>
         <div className="relative space-y-8 max-w-md">
           <h1 className="font-display text-5xl font-bold leading-tight">
-            Your second brain, <span className="text-gradient-primary">finally</span> connected.
+            {t("app.tagline")}
           </h1>
           <p className="text-muted-foreground text-lg">
             Notes that link to notes. Tasks that live where the thinking happens. A graph that shows you what
             you actually know.
           </p>
           <div className="space-y-3">
-            <Feature icon={<Sparkles className="h-4 w-4" />} text="Smart linking & keywords" />
-            <Feature icon={<GitBranch className="h-4 w-4" />} text="Visual knowledge graph" />
-            <Feature icon={<ListTodo className="h-4 w-4" />} text="Tasks attached to context" />
+            <Feature icon={<Sparkles className="h-4 w-4" />} text={t("features.smartLinking")} />
+            <Feature icon={<GitBranch className="h-4 w-4" />} text={t("features.visualGraph")} />
+            <Feature icon={<ListTodo className="h-4 w-4" />} text={t("features.tasks")} />
           </div>
         </div>
-        <div className="relative text-xs text-muted-foreground font-mono">v0.1 · prototype build</div>
+        <div className="relative text-xs text-muted-foreground font-mono">{t("app.version")}</div>
       </div>
 
       {/* Right — form */}
@@ -49,15 +51,15 @@ export function LoginScreen() {
             <Logo />
           </div>
           <div className="space-y-2">
-            <h2 className="font-display text-3xl font-semibold">Welcome back</h2>
+            <h2 className="font-display text-3xl font-semibold">{t("auth.enterNeuraNote")}</h2>
             <p className="text-sm text-muted-foreground">
-              Any credentials work — this is a prototype demo.
+              {t("auth.demoNote")}
             </p>
           </div>
 
           <form onSubmit={submit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{t("auth.email")}</Label>
               <Input
                 id="email"
                 type="email"
@@ -67,7 +69,7 @@ export function LoginScreen() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">{t("auth.password")}</Label>
               <Input
                 id="password"
                 type="password"
@@ -77,13 +79,13 @@ export function LoginScreen() {
               />
             </div>
             <Button type="submit" className="w-full h-11 bg-gradient-primary hover:opacity-90 text-primary-foreground font-semibold shadow-glow group">
-              Enter NeuraNote
+              {t("auth.enterNeuraNote")}
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Button>
           </form>
 
           <p className="text-xs text-center text-muted-foreground">
-            By continuing you accept the imaginary terms of an unreleased product.
+            {t("auth.terms")}
           </p>
         </div>
       </div>

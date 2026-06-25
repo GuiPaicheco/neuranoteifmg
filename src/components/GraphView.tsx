@@ -1,10 +1,13 @@
 import { useMemo, useRef, useState, useEffect } from "react";
 import { useStore } from "@/store/useStore";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Link2, Eye } from "lucide-react";
+import { toast } from "sonner";
 
 interface Pos { x: number; y: number }
 
 export function GraphView() {
-  const { notes, selectedId, select } = useStore();
+  const { notes, selectedId, select, upsert } = useStore();
   const ref = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: 800, h: 600 });
   const [hover, setHover] = useState<string | null>(null);
@@ -51,19 +54,60 @@ export function GraphView() {
   }, [notes, positions]);
 
   const categoryColor: Record<string, string> = {
-    Study: "hsl(var(--primary))",
-    Work: "hsl(var(--secondary))",
-    Personal: "hsl(var(--accent))",
-    Research: "hsl(var(--success))",
-    Ideas: "hsl(var(--warning))",
+    Aulas: "hsl(var(--primary))",
+    Trabalhos: "hsl(var(--secondary))",
+    Provas: "hsl(var(--accent))",
+    Projetos: "hsl(var(--success))",
+    Pesquisa: "hsl(186 100% 58%)",
+    Ideias: "hsl(var(--warning))",
   };
+
+  const selectedNote = notes.find((n) => n.id === selectedId);
 
   return (
     <div ref={ref} className="relative h-full w-full overflow-hidden bg-card/40 rounded-xl border border-border">
+      {/* Top Left: Graph Metadata */}
       <div className="absolute top-4 left-4 z-10 glass rounded-lg px-3 py-2">
-        <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-1">Knowledge graph</div>
-        <div className="text-xs text-muted-foreground">{notes.length} notes · {edges.length} links</div>
+        <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-1">Mapa de Conexões</div>
+        <div className="text-xs text-muted-foreground">{notes.length} notas · {edges.length} ligações</div>
       </div>
+
+      {/* Top Right: Selected node visual connector overlay */}
+      {selectedNote && (
+        <div className="absolute top-4 right-4 z-10 glass rounded-lg p-4 space-y-3 max-w-xs animate-fade-up">
+          <div className="text-[10px] uppercase tracking-[0.18em] text-emerald-400 font-bold font-mono">Nota Selecionada</div>
+          <div className="space-y-1">
+            <h4 className="text-sm font-semibold truncate text-foreground">{selectedNote.title}</h4>
+            <div className="text-xs text-muted-foreground">Categoria: {selectedNote.category}</div>
+          </div>
+          <div className="flex gap-2">
+            <Select
+              onValueChange={async (targetId) => {
+                if (targetId && targetId !== selectedNote.id && !selectedNote.connections.includes(targetId)) {
+                  const updatedConnections = [...selectedNote.connections, targetId];
+                  await upsert({ ...selectedNote, connections: updatedConnections });
+                  toast.success("Notas vinculadas visualmente no grafo!");
+                }
+              }}
+            >
+              <SelectTrigger className="bg-muted/40 h-8 text-[11px] flex-1">
+                <SelectValue placeholder="Vincular a..." />
+              </SelectTrigger>
+              <SelectContent>
+                {notes
+                  .filter((n) => n.id !== selectedNote.id && !selectedNote.connections.includes(n.id))
+                  .map((n) => (
+                    <SelectItem key={n.id} value={n.id} className="text-xs">
+                      {n.title}
+                    </SelectItem>
+                  ))}
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+      )}
+
+      {/* Bottom Left: Category Legend */}
       <div className="absolute bottom-4 left-4 z-10 glass rounded-lg p-3 space-y-1">
         {Object.entries(categoryColor).map(([k, c]) => (
           <div key={k} className="flex items-center gap-2 text-xs">
@@ -126,8 +170,8 @@ export function GraphView() {
               <text
                 y={r + 16}
                 textAnchor="middle"
-                className="font-display fill-foreground"
-                style={{ fontSize: 12, fontWeight: active ? 600 : 500 }}
+                className="font-display fill-foreground font-medium"
+                style={{ fontSize: 11, fontWeight: active ? 600 : 500 }}
               >
                 {n.title.length > 24 ? n.title.slice(0, 22) + "…" : n.title}
               </text>

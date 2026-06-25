@@ -33,7 +33,7 @@ export function LoginSelectMode({ onSelectPersonal, onSelectCorporate }: Props) 
           </div>
         </div>
         <div className="relative text-xs text-muted-foreground font-mono">
-          {t("app.version")} · IFMG Campus Sabará
+          {t("app.version")} · IFMG - Campus Ibirité
         </div>
       </div>
 

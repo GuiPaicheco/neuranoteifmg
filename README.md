@@ -298,3 +298,38 @@ Como melhorias futuras, sugerimos a expansão do grafo para visualizações trid
 3. **FASTAPI Framework Documentation**. *FastAPI - Concurrency and sub-dependencies*. Disponível em: <https://fastapi.tiangolo.com/>. Acesso em: 25 jun. 2026.
 4. **REACT Dev Documentation**. *React Context API and custom hooks state management*. Disponível em: <https://react.dev/>. Acesso em: 25 jun. 2026.
 5. **MONGODB Manual**. *NoSQL databases, document models, and asynchronous interfaces*. Disponível em: <https://www.mongodb.com/docs/>. Acesso em: 25 jun. 2026.
+
+---
+
+## Guia rápido do repositório
+
+Aplicação de notas e gestão do conhecimento com grafo de relações, frontend React/TypeScript e backend Python.
+
+**Contexto:** Projeto acadêmico em desenvolvimento.
+
+### Ambiente de desenvolvimento
+
+Requer Node.js e npm. Instale as dependências e inicie o ambiente de desenvolvimento:
+
+```bash
+git clone https://github.com/GuiPaicheco/neuranoteifmg.git
+cd neuranoteifmg
+npm install
+npm run dev
+```
+
+Consulte o endereço informado pelo servidor no terminal.
+
+| Script | Comando configurado |
+| --- | --- |
+| `npm run dev` | `vite` |
+| `npm run build` | `vite build` |
+| `npm run build:dev` | `vite build --mode development` |
+| `npm run lint` | `eslint .` |
+| `npm run preview` | `vite preview` |
+| `npm run test` | `vitest run` |
+| `npm run test:watch` | `vitest` |
+
+Se o projeto usar serviços externos, configure suas próprias variáveis de ambiente antes de executar os fluxos integrados. A instalação das dependências não configura banco, autenticação ou serviços remotos.
+
+Consulte os requisitos e as limitações nas seções acima antes de usar o sistema. Esta atualização revisa a documentação; não representa uma nova validação de execução ou de segurança.
